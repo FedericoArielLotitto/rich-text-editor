@@ -6,7 +6,7 @@ import path from 'path';
 import { Window } from 'happy-dom';
 import { theBestRichTextEditor } from '../src/richTextEditor.js';
 
-const theBestRichTextEditorId = "the-best-rich-test-editor";
+const theBestRichTextEditorId = "the-best-rich-text-editor";
 
 const htmlDocPath = path.join(__dirname, 'index.html');
 const htmlDocumentContent = fs.readFileSync(htmlDocPath).toString();
@@ -18,12 +18,28 @@ vi.stubGlobal('document', document);
 beforeEach(() => {
     document.body.innerHTML = '';
     document.write(htmlDocumentContent);
+    console.log(document.body.innerHTML);
 });
 
 it('Given html node with an id="the-best-rich-test-editor", it injects a div in the html node', () => {
-    const container = document.createElement(theBestRichTextEditorId);
+    const body = document.querySelector('body');
+    const container = document.createElement('div');
+    container.setAttribute('id', theBestRichTextEditorId);
+    body.appendChild(container);
 
     theBestRichTextEditor();
 
     expect(container.innerHTML).not.toBeNull();
+});
+
+it('Given html node with and id="the-best-rich-test-editor, it injects the options for editing and the text area in the html node', () => {
+    const body = document.querySelector('body');
+    const container = document.createElement('div');
+    container.setAttribute('id', theBestRichTextEditorId);
+    body.appendChild(container);
+    
+    theBestRichTextEditor();
+    
+    const options = document.getElementsByClassName('rich-text-options');
+    expect(options).not.toBeNull();
 });
