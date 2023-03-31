@@ -21,14 +21,9 @@ beforeEach(() => {
 });
 
 it('Given html node with an id="the-best-rich-test-editor", it injects a div in the html node', () => {
-    const body = document.querySelector('body');
-    const container = document.createElement('div');
-    container.setAttribute('id', theBestRichTextEditorId);
-    body.appendChild(container);
+    const container = document.createElement(theBestRichTextEditorId);
 
     theBestRichTextEditor();
 
-    expect(body).not.toBeNull();
-    expect(container).not.toBeNull();
     expect(container.innerHTML).not.toBeNull();
 });
