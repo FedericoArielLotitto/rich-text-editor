@@ -16,4 +16,6 @@ export function theBestRichTextEditor() {
 
     textOptions.forEach( textOptionsButton => buttonsOptionsSection.append(textOptionsButton));
     richTextEditor.appendChild(buttonsOptionsSection);
+
+    container.appendChild(richTextEditor);
 }

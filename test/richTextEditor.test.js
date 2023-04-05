@@ -29,10 +29,10 @@ it('Given html node with an id="the-best-rich-test-editor", it injects a div in 
 
     theBestRichTextEditor();
 
-    expect(container.innerHTML).not.toBeNull();
+    expect(document.getElementById(theBestRichTextEditorId).innerHTML.length).toBeGreaterThan(0);
 });
 
-it('Given html node with and id="the-best-rich-test-editor, it injects the options for editing and the text area in the html node', () => {
+it('Given html node with and id="the-best-rich-test-editor", it injects the options for editing and the text area in the html node', () => {
     const body = document.querySelector('body');
     const container = document.createElement('div');
     container.setAttribute('id', theBestRichTextEditorId);
@@ -41,5 +41,7 @@ it('Given html node with and id="the-best-rich-test-editor, it injects the optio
     theBestRichTextEditor();
     
     const options = document.getElementsByClassName('rich-text-options');
+    const optionsFromParent = document.getElementById(theBestRichTextEditorId).firstChild.childNodes;
     expect(options).not.toBeNull();
+    expect(optionsFromParent).toEqual(document.getElementsByClassName('rich-text-options'));
 });
