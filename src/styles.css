@@ -1,0 +1,6 @@
+#the-best-rich-text-editor div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}

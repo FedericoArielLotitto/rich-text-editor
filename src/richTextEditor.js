@@ -20,6 +20,10 @@ export function theBestRichTextEditor() {
     textOptions.forEach( textOptionsButton => buttonsOptionsSection.append(textOptionsButton));
     richTextEditor.appendChild(buttonsOptionsSection);
 
+    const textArea = document.createElement('textarea');
+    textArea.classList.add('rich-text-area');
+    richTextEditor.appendChild(textArea);
+
     container.appendChild(richTextEditor);
 
     function createOptions() {
