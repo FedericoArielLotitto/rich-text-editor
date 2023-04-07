@@ -32,7 +32,7 @@ it('Given html node with an id="the-best-rich-test-editor", it injects a div in 
     expect(document.getElementById(theBestRichTextEditorId).innerHTML.length).toBeGreaterThan(0);
 });
 
-it('Given html node with an id="the-best-rich-test-editor", it injects a text area in the html node', () => {
+it('Given html node with an id="the-best-rich-test-editor", it injects a text area in the html node with 4 default rows', () => {
     const body = document.querySelector('body');
     const container = document.createElement('div');
     container.setAttribute('id', theBestRichTextEditorId);
@@ -41,6 +41,7 @@ it('Given html node with an id="the-best-rich-test-editor", it injects a text ar
     theBestRichTextEditor();
 
     expect(document.querySelector('#the-best-rich-text-editor textarea')).not.toBeNull();
+    expect(document.querySelector('#the-best-rich-text-editor textarea').getAttribute('rows')).toBe('4');
 });
 
 it('Given html node with and id="the-best-rich-test-editor", it injects the options for editing in the html node', () => {
@@ -82,4 +83,16 @@ it('Given html node with and id="the-best-rich-test-editor", it injects the opti
     const optionsFromParent = document.querySelector('#the-best-rich-text-editor button');
     expect(document.querySelector('.rich-text-options').childNodes).toContain(optionsFromParent);
     expect(document.querySelector('.rich-text-options').childNodes[1].textContent).toEqual('I');
+});
+
+it('Given html node with id="the-best-rich-text-editor", it injects two sections, one for the options buttons and other for the text area', () => {
+    const body = document.querySelector('body');
+    const container = document.createElement('div');
+    container.setAttribute('id', theBestRichTextEditorId);
+    body.appendChild(container);
+
+    theBestRichTextEditor();
+
+    const richTextEditor = document.querySelector(`#${theBestRichTextEditorId} div`);
+    expect(richTextEditor.childNodes.length).toEqual(2);
 });

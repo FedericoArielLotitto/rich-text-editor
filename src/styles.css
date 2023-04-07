@@ -1,6 +1,23 @@
+#the-best-rich-text-editor {
+    width: 100%;
+}
 #the-best-rich-text-editor div {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+    flex-flow: column wrap;
+}
+.container-rich-text-options {
+    padding: .2% 0 .2% 0;
+}
+.container-rich-text-area {
+    display: flex;
+    justify-content: center;
+}
+.rich-text-options {
+    display: flex;
+    justify-content: center;
+    gap: 1%;
+}
+.rich-text-area {
+    resize: none;
+    width: 100%;
 }
